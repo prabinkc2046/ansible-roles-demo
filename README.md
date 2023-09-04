@@ -1,8 +1,8 @@
-#Deploying a containerized application with ansible
+# Deploying a containerized application with ansible
 
 This project demonstrates how to automate the deployment of a containerized application using Ansible roles. The Ansible roles in this repository cover various aspects of the deployment process, ensuring that it is efficient, repeatable, and secure.
 
-##Project Structure
+## Project Structure
 ```
 app-deployment-with-ansible/
 ├── ansible.cfg
@@ -58,40 +58,40 @@ app-deployment-with-ansible/
             └── main.yml
 ```
 
-##Deployment Process
+## Deployment Process
 
 To deploy your containerized application, follow these steps:
 
-###System Setup: Configure the target system for deployment.
+### System Setup: Configure the target system for deployment.
 
 ```shell
 ansible-playbook -i inventory/production/host playbooks/system-setup.yml
 ```
 
-###Firewall Setup: Set up the firewall rules to secure the system.
+### Firewall Setup: Set up the firewall rules to secure the system.
 
 ```shell
 ansible-playbook -i inventory/production/host playbooks/firewall-setup.yml
 ```
 
-###Docker Setup: Install and configure Docker on the target system.
+### Docker Setup: Install and configure Docker on the target system.
 
 ```shell
 ansible-playbook -i inventory/production/host playbooks/docker-setup.yml
 ```
-###Docker Compose Setup: Configure Docker Compose for container orchestration.
+### Docker Compose Setup: Configure Docker Compose for container orchestration.
 
 ```shell
 ansible-playbook -i inventory/production/host playbooks/docker-compose-setup.yml
 ```
 
-###Deploy App: Deploy your containerized application.
+### Deploy App: Deploy your containerized application.
 
 ```shell
 ansible-playbook -i inventory/production/host playbooks/deploy-app.yml
 ```
 
-###Nginx Setup: Configure Nginx as a reverse proxy for your application.
+### Nginx Setup: Configure Nginx as a reverse proxy for your application.
 
 ```shell
 ansible-playbook -i inventory/production/host playbooks/nginx-setup.yml
@@ -99,13 +99,13 @@ ansible-playbook -i inventory/production/host playbooks/nginx-setup.yml
 
 After completing these steps, your application will be available at http://ip_address.
 
-##Security
+## Security
 Security is a top priority in this project. All sensitive variables are encrypted using Ansible Vault to ensure the confidentiality of your deployment.
 
-###Variables
+### Variables
 host_vars/new_user.yml: Contains variables specific to the new user.
 host_vars/shapetracker.yml: Contains variables specific to the host.
 
-#Feedback and Contributions
+# Feedback and Contributions
 If you have any feedback or would like to contribute to this project, please feel free to open an issue or a pull request on GitHub.
 

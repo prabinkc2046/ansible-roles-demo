@@ -1,0 +1,16 @@
+- name: Decrypt the variable for new ansible user
+  include_vars: "{{ path_to_variable_file }}"
+
+- name: Clone the repo
+  git:
+    repo: "{{ repo_url }}"
+    dest: "{{ path_to_repo }}"
+  
+- name: Run app with docker-compose 
+  command: docker-compose up -d 
+  args:
+    chdir: "{{ path_to_repo }}"
+
+
+
+  

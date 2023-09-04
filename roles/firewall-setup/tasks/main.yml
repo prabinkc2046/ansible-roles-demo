@@ -1,0 +1,39 @@
+- name: Decrypt the ansible_user
+  include_vars: "{{ path_to_variable_file }}"
+
+- name: Install ufw
+  apt:
+    name: ufw
+    state: present
+
+- name: allow on port 22
+  ufw:
+    port: '22'
+    proto: tcp
+    rule: allow
+    
+- name: Allow http
+  ufw: 
+    port: '80'
+    proto: tcp
+    rule: allow
+  
+- name: Allow https
+  ufw:
+    port: '443'
+    proto: tcp
+    rule: allow
+
+- name: Allow outgoing
+  ufw:
+    direction: out
+    rule: allow
+
+- name: Deny incoming
+  ufw: 
+    direction: in
+    rule: deny
+
+- name: Enable
+  ufw:
+    state: enabled

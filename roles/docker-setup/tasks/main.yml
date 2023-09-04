@@ -1,0 +1,19 @@
+- name: decrypt ansible user
+  include_vars: "{{ path_to_variable_file }}"
+    
+- name: Download docker-install script
+  get_url:
+    url: https://get.docker.com 
+    dest: /tmp/get-docker.sh
+
+- name: Install docker using script
+  command: sh /tmp/get-docker.sh
+
+- name: Make a user member of docker group
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: yes
+
+- name: Reboot the system
+  reboot:

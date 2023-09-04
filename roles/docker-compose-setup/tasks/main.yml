@@ -1,0 +1,14 @@
+- name: Decrypt the ansible_user
+  include_vars: "{{ path_to_variable_file }}"
+  
+- name: Download docker-compose
+  get_url:
+    url: "{{ docker_compose_url }}"
+    dest: /usr/local/bin/docker-compose
+    mode: '0755'
+
+- name: Create a symbolic link
+  file:
+    src: /usr/local/bin/docker-compose
+    dest: /usr/bin/docker-compose
+    state: link

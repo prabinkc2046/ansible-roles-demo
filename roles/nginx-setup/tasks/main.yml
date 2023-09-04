@@ -1,0 +1,33 @@
+- name: Decrypt ansible user variable
+  include_vars: "{{ path_to_variable_file }}"
+
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Configure nginx as reverse proxy
+  template:
+    src: ../templates/nginx.config.jj
+    dest: /etc/nginx/sites-available/shapetracker
+
+- name: Create a symbolic link 
+  file:
+    src: /etc/nginx/sites-available/shapetracker
+    dest: /etc/nginx/sites-enabled/shapetracker
+    state: link
+
+- name: Test if the config is accepted as okay
+  command: nginx -t
+  register: nginx_config_result
+
+- name: Debug
+  debug:
+    var: nginx_config_result
+
+- name: Restart nginx if config is passed
+  systemd:
+    name: nginx
+    state: restarted
+  when: nginx_config_result.rc == 0
+

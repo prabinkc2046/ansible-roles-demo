@@ -1,0 +1,52 @@
+- name: Decrypt the new host variable
+  include_vars: "{{ path_to_host_var_file }}"
+    
+- name: Update the system 
+  apt:
+    update_cache: yes
+    upgrade: yes
+  when: ansible_os_family == "Debian"
+
+- name: Create a new user
+  user:
+    name: "{{ new_user }}"
+    createhome: yes
+    shell: /bin/bash
+
+- name: Add to sudo group
+  user:
+    name: "{{ new_user }}"
+    groups: sudo
+    append: yes
+
+- name: Set up ssh key authorization
+  authorized_key:
+    user: "{{ new_user }}"
+    state: present
+    key: "{{ authorized_key }}"
+
+- name: Make a new user passwordless sudoers
+  lineinfile:
+    path: /etc/sudoers
+    line: "{{ new_user }} ALL=(ALL) NOPASSWD: ALL"
+    validate: "/usr/sbin/visudo -cf %s"
+
+- name: Disable root login
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#?PermitRootLogin'
+    line: 'PermitRootLogin no'
+  notify: restart sshd
+
+- name: Disable password authentication
+  lineinfile: 
+    path: /etc/ssh/sshd_config
+    regexp: '^#?PasswordAuthentication'
+    line: 'PasswordAuthentication no'
+  notify: restart sshd
+
+- name: Set up hostname
+  hostname:
+    name: "{{ hostname }}"
+  notify: edit host config file
+

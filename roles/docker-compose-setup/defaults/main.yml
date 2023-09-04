@@ -1,0 +1,2 @@
+docker_compose_url: https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}
+path_to_variable_file: "../../../host_vars/new_user.yml"

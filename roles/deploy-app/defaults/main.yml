@@ -1,0 +1,3 @@
+repo_url: https://github.com/prabinkc2046/shapeTracker.git
+path_to_repo: "/home/{{ ansible_user }}/shapetracker"
+path_to_variable_file: "../../../host_vars/new_user.yml"

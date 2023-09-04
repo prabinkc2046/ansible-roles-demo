@@ -1,0 +1,7 @@
+- name: Clone the app repo and deploy the app with docker-compose
+  hosts: webservers
+  become: true
+  
+  roles:
+    - deploy-app
+

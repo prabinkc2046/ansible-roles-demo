@@ -1,0 +1,9 @@
+- name: Docker set up
+  hosts: webservers
+  become: true
+  vars_files:
+    - ~/ansible-roles-demo/host_vars/new_user.yml
+  
+  roles:
+    - docker-setup
+    

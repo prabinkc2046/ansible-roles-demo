@@ -1,7 +1,8 @@
 # Deploying a containerized application with ansible
 
 This project demonstrates how to automate the deployment of a containerized application using Ansible roles. The Ansible roles in this repository cover various aspects of the deployment process, ensuring that it is efficient, repeatable, and secure.
-[![Video Demo](https://img.youtube.com/vi/p2m_rcpUM6w/0.jpg)](https://www.youtube.com/watch?v=p2m_rcpUM6w)
+
+[Click here for video demo](https://www.youtube.com/watch?v=p2m_rcpUM6w)
 
 
 ## Project Structure

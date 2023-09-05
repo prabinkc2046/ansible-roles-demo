@@ -74,30 +74,30 @@ ansible-playbook -i inventory/production/host playbooks/system-setup.yml
 ### Firewall Setup: Set up the firewall rules to secure the system.
 
 ```shell
-ansible-playbook -i inventory/production/host playbooks/firewall-setup.yml
+ansible-playbook  playbooks/firewall-setup.yml
 ```
 
 ### Docker Setup: Install and configure Docker on the target system.
 
 ```shell
-ansible-playbook -i inventory/production/host playbooks/docker-setup.yml
+ansible-playbook  playbooks/docker-setup.yml
 ```
 ### Docker Compose Setup: Configure Docker Compose for container orchestration.
 
 ```shell
-ansible-playbook -i inventory/production/host playbooks/docker-compose-setup.yml
+ansible-playbook  playbooks/docker-compose-setup.yml
 ```
 
 ### Deploy App: Deploy your containerized application.
 
 ```shell
-ansible-playbook -i inventory/production/host playbooks/deploy-app.yml
+ansible-playbook  playbooks/deploy-app.yml
 ```
 
 ### Nginx Setup: Configure Nginx as a reverse proxy for your application.
 
 ```shell
-ansible-playbook -i inventory/production/host playbooks/nginx-setup.yml
+ansible-playbook  playbooks/nginx-setup.yml
 ```
 
 After completing these steps, your application will be available at http://ip_address.

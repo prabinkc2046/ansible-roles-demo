@@ -68,7 +68,7 @@ To deploy your containerized application, follow these steps:
 ### System Setup: Configure the target system for deployment.
 
 ```shell
-ansible-playbook -i inventory/production/host playbooks/system-setup.yml
+ansible-playbook  playbooks/system-setup.yml
 ```
 
 ### Firewall Setup: Set up the firewall rules to secure the system.

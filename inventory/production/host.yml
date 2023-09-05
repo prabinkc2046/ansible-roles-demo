@@ -1,0 +1,42 @@
+all:
+  children:
+    webservers:
+      children:
+        webservers_usa:
+          hosts:
+            server1:
+              ansible_host: 1.1.1.1
+            server2:
+              ansible_host: 2.2.2.2
+
+        webservers_aus:
+          hosts:
+            server2:
+              ansible_host: 1.1.1.1
+            server3:
+              ansible_host: 3.3.3.3
+
+        webservers_in:
+          hosts:
+            server2:
+              ansible_host: 1.1.1.1
+            server3:
+              ansible_host: 3.3.3.3
+
+    dbservers:
+      children:
+        dbservers_usa:
+          hosts:
+            server2:
+              ansible_host: 1.1.1.1
+            server3:
+              ansible_host: 3.3.3.3
+        dbservers_aus:
+          hosts:
+            server2:
+              ansible_host: 1.1.1.1
+            server3:
+              ansible_host: 3.3.3.3
+        
+
+    

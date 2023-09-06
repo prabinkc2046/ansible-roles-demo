@@ -1,0 +1,23 @@
+1. To gathers the fact about the target host system, 
+if gathering=implicit in ansible.cfg,then set gather_facts: True on the play level
+if gathering=explicit in ansible.cfg, then by default, it will gather facts.
+To save the information gathering time, set gather_facts: false
+
+2. To see the ansible_facts on the host system, use this:
+- name: List the ansible_facts of the host
+  debug:
+    var: ansible_facts
+
+3. To see the list of modules, use this:
+ansible-doc -l
+
+4. To see the current ansible setting:
+ansible-config dump
+
+5. To know the variables list to use in ansible.cfg:
+ansible-config init
+
+6. To see which config or setting is effective:
+ansible-config view
+
+

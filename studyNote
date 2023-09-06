@@ -35,4 +35,34 @@ ansible-play playbooks/configure.nginx.yml --diff
 10. Check the systax error:
 ansible-playbook nginx.yml --syntax-check
 
+11. Use ansible-lint to check the health of playbooks
+ansible-lint playbook/system-setup.yml
+
+12. Install ansible as follow:
+Upgrade pip3:
+python3 -m pip install --upgrade pip
+
+After upgrade, Install ansible-lint:
+pip3 install ansible-lint
+
+If ansible-lint is not in the PATH, add it to the path:
+path to directory where anisble-lint is situated: /home/user/.local/bin
+Open ~/.bashrc or ~/.bash_profile with nano or vi and append this line:
+export PATH="$PATH:/home/user/.local/bin"
+and then 
+source ~/.bashrc to make the change effective
+
+13. Ansible condition
+- name: Install nginx on Debian
+  apt:
+    name: nginx
+    state: present
+  when: ansible_os_family == 'Debian'
+
+- name: Install nginx on Redhat
+  apt:
+    name: nginx
+    state: present
+  when: ansible_os_family == 'RedHat'
+
 

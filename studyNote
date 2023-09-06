@@ -20,4 +20,10 @@ ansible-config init
 6. To see which config or setting is effective:
 ansible-config view
 
+7. Verifying playbook
+Verify if the playbook produces the intended effect by using the check mode:
+ansible-play playbooks/install-nginx.yml --check
+This will not make any changes in the system but will let us know the actual effect it would take if running without --check.
+Some of the modules might not support the --check mode, in that case, that task will be skipped.
+
 

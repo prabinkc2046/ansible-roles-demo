@@ -65,4 +65,28 @@ source ~/.bashrc to make the change effective
     state: present
   when: ansible_os_family == 'RedHat'
 
+14. Ansible conditional based on facts
+examples:
+- name: Check OS distribution
+  debug:
+    msg: This is Ubuntu
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Check OS distribution
+  debug:
+    msg: This is Centos
+  when: ansible_distribution == 'Centos'
+
+- name: Check the environment
+  debug:
+    msg: This is a production env.
+  when: lookup('env','ENVIRONMENT') == 'production'
+
+- name: Check the environment
+  debug:
+    msg: This is a development env.
+  when: lookup('env','ENVIRONMENT') == 'development'
+
+
+
 

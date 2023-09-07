@@ -87,6 +87,37 @@ examples:
     msg: This is a development env.
   when: lookup('env','ENVIRONMENT') == 'development'
 
+15. Loop
+example1:
+- name: create a number of user
+  user:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - user1
+    - user2
+    - user3
+
+example2:
+- name: Create a number of directories
+  file:
+    path: "/etc/ansible/{{ item }}"
+    state: directory
+  with_items:
+    - dir1
+    - dir2
+    - dir3
+
+example3:
+- name: Create a number of users with specific uid
+  user:
+    name: "{{ item.key }}"
+    state: present
+  with_dict:
+    user1:
+      uid: 1001
+    user2:
+      uid: 1002
 
 
 

@@ -119,5 +119,16 @@ example3:
     user2:
       uid: 1002
 
+16. Roles
+To create a skeleton structure for the role you need, use this:
+ansible-galaxy init < role's name >
+
+If you do not want to create role by yourself but want to find the roles suitable to your need
+created by somebody else, use this to search the roles:
+ansible-galaxy search < role's name >
+example: ansible-galaxy search mysql
+
+If you find the role that suits your need, install as follow:
+ansible-galaxy install < role's name > -p ./roles
 
 
